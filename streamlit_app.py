@@ -14,11 +14,11 @@ streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 #importing pandas always "" inside pandas.read_csv("")
 import pandas 
 my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
-#pull data into the dataframe using the variable my_fruit_list
-streamlit.dataframe(my_fruit_list)
+#set fruit name column as the index of the data
+my_fruit_list = my_fruit_list.set_index('Fruit')
 
 #Create User-Interaction or User interface or UI its called multi select multi select is ("title",list(dataframe.index))
 # Separate the title and the list with "," also the list consists of the dataframe with .index 
 streamlit.multiselect("Pick Some Fruits:",list(my_fruit_list.index))
-#display the table on the page
+#pull data into the dataframe using the variable my_fruit_list
 streamlit.dataframe(my_fruit_list)
