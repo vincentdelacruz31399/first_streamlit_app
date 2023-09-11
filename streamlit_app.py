@@ -14,4 +14,5 @@ streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 #importing pandas always "" inside pandas.read_csv("")
 import pandas 
 my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
+#pull data into the dataframe using the variable my_fruit_list
 streamlit.dataframe(my_fruit_list)
