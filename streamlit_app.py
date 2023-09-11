@@ -1,7 +1,7 @@
 #"Commit" means "SAVE" every time "Commit" we can put note on what is the changes
 import streamlit
 #title of the streamlit
-streamlit.title('My Parents New Healthy Dinner')
+
 #Body of the streamlit
 streamlit.header('Breakfast Menu')
 streamlit.text(' Omega 3 & Blueberry Oatmeal')
