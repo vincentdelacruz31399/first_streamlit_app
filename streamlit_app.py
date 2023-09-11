@@ -25,9 +25,9 @@ my_fruit_list = my_fruit_list.set_index('Fruit')
 #filter the table data will put the selected fruits into a variable called "fruits_selected". then ask our app 
 #to use the fruits in our fruits_selected list to pull rows from the full dataset(and assigned that data to a variable 
 #called fruits_to_show).Finally, we'll ask the app to use the data in fruits_to_show in the dataframe it displays on the page
-fruit_selected = streamlit.multiselect("Pick Some Fruits:",list(my_fruit_list.index),['Avocado','Strawberries'])
+fruits_selected = streamlit.multiselect("Pick Some Fruits:",list(my_fruit_list.index),['Avocado','Strawberries'])
 #use myfruitlist dataframe then put inside [fruit_selected]
-fruit_to_show = my_fruit_list.loc[fruits_selected]
+fruits_to_show = my_fruit_list.loc[fruits_selected]
 #pull data into the dataframe using the variable my_fruit_list use now the fruits_to_show dataframe for selected 
 #streamlit.dataframe(my_fruit_list)
-streamlit.dataframe(fruit_to_show)
+streamlit.dataframe(fruits_to_show)
