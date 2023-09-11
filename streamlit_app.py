@@ -19,10 +19,10 @@ my_fruit_list = my_fruit_list.set_index('Fruit')
 
 #Create User-Interaction or User interface or UI its called multi select multi select is ("title",list(dataframe.index))
 # Separate the title and the list with "," also the list consists of the dataframe with .index 
-streamlit.multiselect("Pick Some Fruits:",list(my_fruit_list.index))
+#let's put pre-pick list to set a good example so they can pick the fruit they want to include
+#just put "," in the list after the index then ['',''] separate it with ","
+streamlit.multiselect("Pick Some Fruits:",list(my_fruit_list.index),['Avocado','Strawberries'])
 #pull data into the dataframe using the variable my_fruit_list
 streamlit.dataframe(my_fruit_list)
 
-#let's put pre-pick list to set a good example so they can pick the fruit they want to include
-#just put "," in the list after the index then ['',''] separate it with ,
-streamlit.multiselect("Pick Some Fruits:",list(my_fruit_list.index),['Avocado','Strawberries'])
+
