@@ -35,7 +35,8 @@ streamlit.dataframe(fruits_to_show)
 
 #New Section to display fruityvice api response
 streamlit.header("Fruityvice Fruit Advice!")
-
+fruit_choice = streamlit.text_input('What fruit would you like information about?', 'KIWI') #text , output the 'KIWI' is the output
+streamlit.write('The user entered', fruit_choice) #shows the text then the variable since we store the output inside the variable fruit_choice
 #import python function "REQUEST" with "Get" function and text function
 import requests
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
