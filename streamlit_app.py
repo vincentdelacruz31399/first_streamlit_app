@@ -63,7 +63,7 @@ try:
   else:
        back_from_function = get_fruityvice_data(fruit_choice) #create new variable which value is function get_fruityvice_data which inside is (fruit_choice)variable which connects with users selection
        #output it in the screen as table
-        streamlit.dataframe(back_from_function) # shows on dataframe the back_from_function variable
+       streamlit.dataframe(back_from_function) # shows on dataframe the back_from_function variable
 
 except URLError as e:
     streamlit.error()
