@@ -73,7 +73,7 @@ streamlit.dataframe(my_data_row)
 add_my_fruit = streamlit.text_input('What fruit would you like to add?', 'jackfruit') #text , example output the 'KIWI' is the example output
 streamlit.write('Thanks for adding', add_my_fruit) #shows the text then the variable since we store the output inside the variable fruit_choice
 #import python function "REQUEST" with "Get" function and text function
-import requests
+#import requests
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + add_my_fruit) #added + variable where we store the output of the selected choice in text input
 #streamlit.text(fruityvice_response.json()) # just writes the data to the screen
 
