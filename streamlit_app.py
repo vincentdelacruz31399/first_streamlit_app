@@ -102,7 +102,7 @@ def insert_row_snowflake(new_fruit): #create new function to add the fruit name 
 try:
         add_my_fruit = streamlit.text_input('What fruit would you like to add?') #text , example output the 'KIWI' is the example output
         if not add_my_fruit:
-         streamlit.error("Please select a fruit you like to add.") #error message if not part of fruit list
+         streamlit.error("Please select a fruit you like to add!.") #error message if not part of fruit list
         else:
                 streamlit.button('Add a Fruit to the List')
                 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"]) #if the button is click then connect the variable to the secret account
