@@ -89,17 +89,27 @@ if streamlit.button('Get Fruit Load List'):
         streamlit.dataframe(my_data_row) #call variable my_data_row as dataframe  using streamlit
         
 #don't run anything past here while we troubleshoot        
-stereamlit.stop()
+#stereamlit.stop()
 
 #allows to add user in the frame
-add_my_fruit = streamlit.text_input('What fruit would you like to add?', 'jackfruit') #text , example output the 'KIWI' is the example output
-streamlit.write('Thanks for adding', add_my_fruit) #shows the text then the variable since we store the output inside the variable fruit_choice
+def insert_row_snowflake(new_fruit): #create new function to add the fruit name submissions to the snowflake table
+        with my_cur.cursor() as my_cur:
+                my_cur.execute("insert into fruit_load_list values('from streamlit')") #function that will insert value into the snowflake table
+                return "Thanks for adding" + new_fruit #return a word + the new value that inserted in snowflake
+add_my_fruit = streamlit.text_input('What fruit would you like to add?') #text , example output the 'KIWI' is the example output
+if streamlit.button('Add a Fruit to the List'):
+        my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"]) #if the button is click then connect the variable to the secret account
+        back_from_function = insert_row_snowflake(add_my_fruit) #call new variable which value is function insert_row_function with add_my_fruit inside which is input button where user type what fruit they want to add
+        streamlit.text(back_from_function)
+
+
+#streamlit.write('Thanks for adding', add_my_fruit) #shows the text then the variable since we store the output inside the variable fruit_choice
 #import python function "REQUEST" with "Get" function and text function
 #import requests
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + add_my_fruit) #added + variable where we store the output of the selected choice in text input
+#fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + add_my_fruit) #added + variable where we store the output of the selected choice in text input
 #streamlit.text(fruityvice_response.json()) # just writes the data to the screen
 
-my_cur.execute("update fruit_load_list set fruit_name = ('from streamlit') where fruit_name = ('test')") 
+#my_cur.execute("update fruit_load_list set fruit_name = ('from streamlit') where fruit_name = ('test')") 
 #this will not work pa just do it!
-my_cur.execute("insert into fruit_load_list values ('from streamlit')")
+#my_cur.execute("insert into fruit_load_list values ('from streamlit')")
 
