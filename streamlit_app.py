@@ -43,17 +43,27 @@ streamlit.dataframe(fruits_to_show)
 
 #New Section to display fruityvice api response
 streamlit.header("Fruityvice Fruit Advice!")
-fruit_choice = streamlit.text_input('What fruit would you like information about?', 'KIWI') #text , example output the 'KIWI' is the example output
-streamlit.write('The user entered', fruit_choice) #shows the text then the variable since we store the output inside the variable fruit_choice
+#fruit_choice = streamlit.text_input('What fruit would you like information about?', 'KIWI') #text , example output the 'KIWI' is the example output
+#streamlit.write('The user entered', fruit_choice) #shows the text then the variable since we store the output inside the variable fruit_choice
+#put the fruity choice advice to a try-except(with nested if-else)
+try:
+  fruit_choice = streamlit.text_input('What fruit would you like information about?")
+  if not fruit_choice:
+         streamlit.error("Please select a fruit to get information.")#error message if not part of fruit list 
+  else:  
+       fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice) #added + variable where we store the output of the selected choice in text input
+       #streamlit.text(fruityvice_response.json()) # just writes the data to the screen
+       #take the json version of the response and normalize it
+       fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+       #output it in the screen as table
+       streamlit.dataframe(fruityvice_normalized)
 
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice) #added + variable where we store the output of the selected choice in text input
-#streamlit.text(fruityvice_response.json()) # just writes the data to the screen
+except URLError as e:
+    streamlit.error()
+#Introducing this structure allows us to separate the code that is loaded once from the code that should be repeated each time a new value is entered.
+#Notice there are three lines of code under the ELSE. These are important steps we will be repeating. We can pull them out into a separate bit of code called a function. We'll do that next. 
 
-#take the json version of the response and normalize it
-fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
-#output it in the screen as table
-streamlit.dataframe(fruityvice_normalized)
-
+  
 #don't run anything past here while we troubleshoot
 stereamlit.stop()
 
