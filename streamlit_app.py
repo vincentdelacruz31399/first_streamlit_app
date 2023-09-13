@@ -47,15 +47,15 @@ streamlit.header("Fruityvice Fruit Advice!")
 #streamlit.write('The user entered', fruit_choice) #shows the text then the variable since we store the output inside the variable fruit_choice
 #put the fruity choice advice to a try-except(with nested if-else)
 try:
-     fruit_choice = streamlit.text_input('What fruit would you like information about?")
+  fruit_choice = streamlit.text_input('What fruit would you like information about?')
   if not fruit_choice:
-         streamlit.error("Please select a fruit to get information.")#error message if not part of fruit list 
+         streamlit.error("Please select a fruit to get information.") #error message if not part of fruit list 
   else:  
-       fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice) #added + variable where we store the output of the selected choice in text input
-       #streamlit.text(fruityvice_response.json()) # just writes the data to the screen
-       #take the json version of the response and normalize it
+       fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice) #added + variable where we store the output of the selected choice in text inpu
+#streamlit.text(fruityvice_response.json()) # just writes the data to the screen
+#take the json version of the response and normalize it
        fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
-       #output it in the screen as table
+#output it in the screen as table
        streamlit.dataframe(fruityvice_normalized)
 
 except URLError as e:
