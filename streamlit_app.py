@@ -75,7 +75,7 @@ except URLError as e:
 #stereamlit.stop()
 
 #header
-streamlit.header("The fruit load list contain:")
+streamlit.header("View Our Fruit List - Add Your Favorites!")
 #snowflake-related functions
 def get_fruit_load_list():
         with my_cnx.cursor() as my_cur: #with function means getting my_cnx.cursor to a variable name called as "my_cur"
@@ -83,9 +83,10 @@ def get_fruit_load_list():
              return my_cur.fetchall() #return all value inside my_cur variable if only one the function is fetchone() if all fetchall
 
 #Add a button to load the fruit table
-if streamlit.button('Get Fruit Load List'):
+if streamlit.button('Get Fruit List'):
         my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])  #Query trial account Metadata
         my_data_row = get_fruit_load_list() #store the value of get_fruit_load_list function to a variable called my_data_row
+        my_cnx.close() #close all the connections at the end of each buttons script.
         streamlit.dataframe(my_data_row) #call variable my_data_row as dataframe  using streamlit
         
 #don't run anything past here while we troubleshoot        
@@ -101,6 +102,7 @@ add_my_fruit = streamlit.text_input('What fruit would you like to add?') #text ,
 if streamlit.button('Add a Fruit to the List'):
         my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"]) #if the button is click then connect the variable to the secret account
         back_from_function = insert_row_snowflake(add_my_fruit) #call new variable which value is function insert_row_function with add_my_fruit inside which is input button where user type what fruit they want to add
+        my_cnx.close() # close all connetion at the end of button script
         streamlit.text(back_from_function)
 
 
