@@ -109,7 +109,7 @@ try:
                 back_from_function = insert_row_snowflake(add_my_fruit) #call new variable which value is function insert_row_function with add_my_fruit inside which is input button where user type what fruit they want to add
                 my_cnx.close() # close all connetion at the end of button script
                 streamlit.text(back_from_function)
-                streamlit.clear(back_from_function)
+                
                 
                 
         
