@@ -86,7 +86,7 @@ def get_fruit_load_list():
 if streamlit.button('Get Fruit Load List'):
         my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])  #Query trial account Metadata
         my_data_row = get_fruit_load_list() #store the value of get_fruit_load_list function to a variable called my_data_row
-        streamlit.dataframe(my_data_row) #call variable my_data_row as dataframe  using streamlit
+        streamlit.dataframe(my_data_row) as List of Fruit #call variable my_data_row as dataframe  using streamlit
         
 #don't run anything past here while we troubleshoot        
 #stereamlit.stop()
@@ -94,7 +94,7 @@ if streamlit.button('Get Fruit Load List'):
 #allows to add user in the frame
 def insert_row_snowflake(new_fruit): #create new function to add the fruit name submissions to the snowflake table
         with my_cnx.cursor() as my_cur:
-                my_cur.execute("insert into fruit_load_list values ('" + new_fruit + "')") #function that will insert value into the snowflake table
+                my_cur.execute("insert into fruit_load_list values ('" + new_fruit + "')") #function that will insert value into the snowflake table the value is the variable of the function ('" + <variablename> + "') to show the real value in the data frame 
                 return "Thanks for adding " +  new_fruit     #return a word + the new value that inserted in snowflake
                 
 add_my_fruit = streamlit.text_input('What fruit would you like to add?') #text , example output the 'KIWI' is the example output
