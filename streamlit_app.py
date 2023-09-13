@@ -100,7 +100,7 @@ def insert_row_snowflake(new_fruit): #create new function to add the fruit name 
                 
                 
 add_my_fruit = streamlit.text_input('What fruit would you like to add?') #text , example output the 'KIWI' is the example output
-if    add_my_fruit = "":
+if add_my_fruit = " ":
 streamlit.error("Please select a fruit to get information.") #error message if not part of fruit list
 else:
       if    streamlit.button('Add a Fruit to the List'):
