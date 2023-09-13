@@ -101,11 +101,11 @@ def insert_row_snowflake(new_fruit): #create new function to add the fruit name 
                 
 
 add_my_fruit = streamlit.text_input('What fruit would you like to add?') #text , example output the 'KIWI' is the example output
-        streamlit.button('Add a Fruit to the List')
-        my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"]) #if the button is click then connect the variable to the secret account
-        back_from_function = insert_row_snowflake(add_my_fruit) #call new variable which value is function insert_row_function with add_my_fruit inside which is input button where user type what fruit they want to add
-        my_cnx.close()  #close all connetion at the end of button script
-        streamlit.text(back_from_function)
+  if    streamlit.button('Add a Fruit to the List')
+         my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"]) #if the button is click then connect the variable to the secret account
+         back_from_function = insert_row_snowflake(add_my_fruit) #call new variable which value is function insert_row_function with add_my_fruit inside which is input button where user type what fruit they want to add
+         my_cnx.close()  #close all connetion at the end of button script
+         streamlit.text(back_from_function)
                
                 
                 
