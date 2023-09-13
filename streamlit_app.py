@@ -47,7 +47,7 @@ streamlit.header("Fruityvice Fruit Advice!")
 #streamlit.write('The user entered', fruit_choice) #shows the text then the variable since we store the output inside the variable fruit_choice
 #put the fruity choice advice to a try-except(with nested if-else)
 try:
-  fruit_choice = streamlit.text_input('What fruit would you like information about?")
+     fruit_choice = streamlit.text_input('What fruit would you like information about?")
   if not fruit_choice:
          streamlit.error("Please select a fruit to get information.")#error message if not part of fruit list 
   else:  
