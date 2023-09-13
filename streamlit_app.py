@@ -56,6 +56,7 @@ my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 #query  data from snowflake table we created fruit_load_list
 my_cur.execute("SELECT * from fruit_load_list")
-my_data_row = my_cur.fetchone()
+#fetch all rows in the table if only one the function is fetchone() if all fetchall
+my_data_row = my_cur.fetchall()
 streamlit.header("The fruit load list contain:")
 streamlit.dataframe(my_data_row)
