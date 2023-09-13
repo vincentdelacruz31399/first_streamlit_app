@@ -45,18 +45,24 @@ streamlit.dataframe(fruits_to_show)
 streamlit.header("Fruityvice Fruit Advice!")
 #fruit_choice = streamlit.text_input('What fruit would you like information about?', 'KIWI') #text , example output the 'KIWI' is the example output
 #streamlit.write('The user entered', fruit_choice) #shows the text then the variable since we store the output inside the variable fruit_choice
+
+#create a repeatable function and move the output here of requesting data from fruityvice.com always starts function with name "DEF"
+def get_fruityvice_data(this_fruit_choice)#inside the function is a variable
+        fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice) #added + variable where we store the output of the selected choice in text inpu
+#streamlit.text(fruityvice_response.json()) # just writes the data to the screen
+#take the json version of the response and normalize it
+        fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+        return fruityvice_normalized #always with return action in a function
+
 #put the fruity choice advice to a try-except(with nested if-else)
 try:
   fruit_choice = streamlit.text_input('What fruit would you like information about?')
   if not fruit_choice:
          streamlit.error("Please select a fruit to get information.") #error message if not part of fruit list 
-  else:  
-       fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice) #added + variable where we store the output of the selected choice in text inpu
-#streamlit.text(fruityvice_response.json()) # just writes the data to the screen
-#take the json version of the response and normalize it
-       fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
-#output it in the screen as table
-       streamlit.dataframe(fruityvice_normalized)
+  else:
+       back_from_function = get_fruityvice_data(fruit_choice) #create new variable which value is function get_fruityvice_data which inside is (fruit_choice)variable which connects with users selection
+       #output it in the screen as table
+        streamlit.dataframe(back_from_function) # shows on dataframe the back_from_function variable
 
 except URLError as e:
     streamlit.error()
