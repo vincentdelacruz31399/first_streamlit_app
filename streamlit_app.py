@@ -68,4 +68,6 @@ streamlit.write('Thanks for adding', add_my_fruit) #shows the text then the vari
 import requests
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + add_my_fruit) #added + variable where we store the output of the selected choice in text input
 #streamlit.text(fruityvice_response.json()) # just writes the data to the screen
-  
+
+#this will not work pa just do it!
+my_cur.execute("insert into fruit_load_list values ('from streamlit')")
