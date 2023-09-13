@@ -1,5 +1,7 @@
 #"Commit" means "SAVE" every time "Commit" we can put note on what is the changes #streamlit is a python function like pandas
 import streamlit
+#add snowflake connector
+import snowflake.connector
 #title of the streamlit
 streamlit.title('My Parents New Healthy Diner')
 #Body of the streamlit
