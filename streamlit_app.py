@@ -72,7 +72,7 @@ except URLError as e:
 
   
 #don't run anything past here while we troubleshoot
-stereamlit.stop()
+#stereamlit.stop()
 
 #header
 streamlit.header("The fruit load list contain:")
