@@ -74,17 +74,20 @@ except URLError as e:
 #don't run anything past here while we troubleshoot
 stereamlit.stop()
 
-
-
-#Query trial account Metadata
-my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-my_cur = my_cnx.cursor()
-#query  data from snowflake table we created fruit_load_list
-my_cur.execute("SELECT * from fruit_load_list")
-#fetch all rows in the table if only one the function is fetchone() if all fetchall
-my_data_row = my_cur.fetchall()
+#header
 streamlit.header("The fruit load list contain:")
-streamlit.dataframe(my_data_row)
+#snowflake-related functions
+def get_fruit_load_list():
+        with my_cnx.cursor() as my_cur: #with function means getting my_cnx.cursor to a variable name called as "my_cur"
+             my_cur.execute("SELECT * from fruit_load_list")   #execute select * command from the list
+             return my_cur.fetchall() #return all value inside my_cur variable if only one the function is fetchone() if all fetchall
+
+#Add a button to load the fruit table
+if streamlit.button('Get Fruit Load List'):
+        my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])  #Query trial account Metadata
+        my_data_row = get_fruit_load_list() #store the value of get_fruit_load_list function to a variable called my_data_row
+        streamlit.dataframe(my_data_row) #call variable my_data_row as dataframe  using streamlit
+        
 
 #allows to add user in the frame
 add_my_fruit = streamlit.text_input('What fruit would you like to add?', 'jackfruit') #text , example output the 'KIWI' is the example output
