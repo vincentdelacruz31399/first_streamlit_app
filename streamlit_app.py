@@ -47,7 +47,8 @@ streamlit.header("Fruityvice Fruit Advice!")
 #streamlit.write('The user entered', fruit_choice) #shows the text then the variable since we store the output inside the variable fruit_choice
 
 #create a repeatable function and move the output here of requesting data from fruityvice.com always starts function with name "DEF"
-def get_fruityvice_data(this_fruit_choice)  #inside the function is a variable
+#inside the function is a variable
+def get_fruityvice_data(this_fruit_choice)  
         fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice) #added + variable where we store the output of the selected choice in text inpu
 #streamlit.text(fruityvice_response.json()) # just writes the data to the screen
 #take the json version of the response and normalize it
