@@ -1,7 +1,6 @@
 #"Commit" means "SAVE" every time "Commit" we can put note on what is the changes #streamlit is a python function like pandas
 import streamlit
-#add snowflake connector
-import snowflake.connector
+
 #title of the streamlit
 streamlit.title('My Parents New Healthy Diner')
 #Body of the streamlit
@@ -48,6 +47,9 @@ fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_c
 fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 #output it in the screen as table
 streamlit.dataframe(fruityvice_normalized)
+
+#add snowflake connector
+import snowflake.connector
 
 #Query trial account Metadata
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
