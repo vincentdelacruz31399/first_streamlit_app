@@ -97,6 +97,7 @@ def insert_row_snowflake(new_fruit): #create new function to add the fruit name 
         with my_cnx.cursor() as my_cur:
                 my_cur.execute("insert into fruit_load_list values ('" + new_fruit + "')") #function that will insert value into the snowflake table the value is the variable of the function ('" + <variablename> + "') to show the real value in the data frame 
                 return "Thanks for adding " +  new_fruit     #return a word + the new value that inserted in snowflake
+                my_cur.clear(add_my_fruit)
                 
 
 try:
@@ -107,7 +108,7 @@ try:
                 streamlit.button('Add a Fruit to the List')
                 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"]) #if the button is click then connect the variable to the secret account
                 back_from_function = insert_row_snowflake(add_my_fruit) #call new variable which value is function insert_row_function with add_my_fruit inside which is input button where user type what fruit they want to add
-                my_cnx.close() # close all connetion at the end of button script
+                my_cnx.close()  #close all connetion at the end of button script
                 streamlit.text(back_from_function)
                 
                 
