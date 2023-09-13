@@ -88,6 +88,8 @@ if streamlit.button('Get Fruit Load List'):
         my_data_row = get_fruit_load_list() #store the value of get_fruit_load_list function to a variable called my_data_row
         streamlit.dataframe(my_data_row) #call variable my_data_row as dataframe  using streamlit
         
+#don't run anything past here while we troubleshoot        
+stereamlit.stop()
 
 #allows to add user in the frame
 add_my_fruit = streamlit.text_input('What fruit would you like to add?', 'jackfruit') #text , example output the 'KIWI' is the example output
