@@ -97,7 +97,7 @@ def insert_row_snowflake(new_fruit): #create new function to add the fruit name 
         with my_cnx.cursor() as my_cur:
                 my_cur.execute("insert into fruit_load_list values ('" + new_fruit + "')") #function that will insert value into the snowflake table the value is the variable of the function ('" + <variablename> + "') to show the real value in the data frame 
                 return "Thanks for adding " +  new_fruit     #return a word + the new value that inserted in snowflake
-                my_cur.clear(add_my_fruit)
+                
                 
 
 try:
@@ -116,4 +116,4 @@ try:
         
 except URLError as e:
     streamlit.error()
-            
+streamlit.clear(add_my_fruit)            
